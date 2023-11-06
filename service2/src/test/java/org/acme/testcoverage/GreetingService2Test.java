@@ -1,8 +1,7 @@
-package org.acme.testcoverage.service2;
+package org.acme.testcoverage;
 
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
-import org.acme.testcoverage.common.CommonService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

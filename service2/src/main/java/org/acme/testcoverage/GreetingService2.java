@@ -1,9 +1,9 @@
-package org.acme.testcoverage.service;
+package org.acme.testcoverage;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class GreetingService {
+public class GreetingService2 {
 
     public String greeting(String name) {
         return "hello " + name;

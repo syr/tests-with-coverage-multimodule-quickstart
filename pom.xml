@@ -22,6 +22,7 @@
         <module>common</module>
         <module>service</module>
         <module>service2</module>
+        <module>jacoco</module>
     </modules>
 
     <dependencyManagement>
@@ -46,11 +47,11 @@
             <artifactId>quarkus-junit5</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-jacoco</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.quarkus</groupId>-->
+<!--            <artifactId>quarkus-jacoco</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
@@ -64,11 +65,22 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.11</version>
-                    <configuration>
-                        <dataFile>${maven.multiModuleProjectDirectory}/target/jacoco.exec</dataFile>
-                        <outputDirectory>${maven.multiModuleProjectDirectory}/target/jacoco-reports</outputDirectory>
-                    </configuration>
+                    <version>0.8.10</version>
+                    <executions>
+                        <execution>
+                            <id>jacoco-initialize</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>jacoco-report</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>io.smallrye</groupId>
@@ -91,10 +103,9 @@
                         <systemPropertyVariables>
                             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                             <maven.home>${maven.home}</maven.home>
-                            <!--                                        https://quarkus.io/guides/tests-with-coverage#working-with-multi-module-projects-->
-                            <quarkus.jacoco.data-file>${maven.multiModuleProjectDirectory}/target/jacoco.exec</quarkus.jacoco.data-file>
-                            <quarkus.jacoco.reuse-data-file>true</quarkus.jacoco.reuse-data-file>
-                            <quarkus.jacoco.report-location>${maven.multiModuleProjectDirectory}/target/coverage</quarkus.jacoco.report-location>
+<!--                            <quarkus.jacoco.data-file>${project.build.directory}/jacoco.exec</quarkus.jacoco.data-file>-->
+<!--                            <quarkus.jacoco.reuse-data-file>true</quarkus.jacoco.reuse-data-file>-->
+<!--                            <quarkus.jacoco.report-location>${project.build.directory}/coverage</quarkus.jacoco.report-location>-->
                         </systemPropertyVariables>
                     </configuration>
                     <executions>

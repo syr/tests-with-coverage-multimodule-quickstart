@@ -1,4 +1,4 @@
-package org.acme.testcoverage.common;
+package org.acme.testcoverage;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
